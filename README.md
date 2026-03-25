@@ -100,3 +100,10 @@ python scripts/bronze.py
 python scripts/silver.py
 python scripts/gold.py
 ```
+Tabela Bronze Print <img width="921" height="918" alt="image" src="https://github.com/user-attachments/assets/1c5c661d-63f1-4c6d-a53c-f13db5162c85" />
+
+Tabela Silver Print <img width="921" height="647" alt="image" src="https://github.com/user-attachments/assets/9142f68f-9197-4a78-a7bc-7490225e1d8d" />
+
+Tabela Gold Print <img width="570" height="1105" alt="image" src="https://github.com/user-attachments/assets/812e5733-310f-4c00-895d-0f0c011f8044" />
+
+
