@@ -1,22 +1,20 @@
 # Lab01_PART1_SEUNUSP
 
 ## Descrição
-Pipeline de ingestão de dados End-to-End utilizando o dataset Nike Global Catalogue 2026 (45 países), implementando a arquitetura Medallion (Bronze → Silver → Gold).
+Pipeline de ingestão de dados End-to-End utilizando o dataset Nike Global Catalogue 2026 (45 países)
 
 ---
 
 ## Arquitetura
 ```
-Kaggle (fonte)
+Kaggle 
     ↓ kagglehub
-data/raw/ (Bronze) — 46 CSVs, 1.447.795 linhas
+data/raw/ (Bronze) — 46 CSVs
     ↓ pandas + limpeza
-data/silver/ (Silver) — nike_silver.parquet, 1.447.448 linhas
+data/silver/ (Silver) — nike_silver.parquet
     ↓ sqlalchemy
 PostgreSQL (Gold) — Star Schema
 ```
-
----
 
 ## Dataset
 - **Nome:** Nike Global Catalogue 2026
@@ -25,27 +23,6 @@ PostgreSQL (Gold) — Star Schema
 - **Colunas:** 35
 - **Países:** 45
 - **Tamanho:** ~1,68 GB
-
----
-
-## Estrutura do Projeto
-```
-Lab01_PART1_SEUNUSP/
-├── data/
-│   ├── raw/          # CSVs originais (não versionados)
-│   └── silver/       # Parquet tratado (não versionado)
-├── docs/             # Gráficos gerados
-├── notebooks/        # Exploração inicial
-├── scripts/
-│   ├── bronze.py     # Ingestão raw
-│   ├── silver.py     # Limpeza e Parquet
-│   └── gold.py       # Carga no PostgreSQL
-├── .gitignore
-├── README.md
-└── requirements.txt
-```
-
----
 
 ## Dicionário de Dados
 
@@ -68,8 +45,6 @@ Lab01_PART1_SEUNUSP/
 | available | bool | Disponibilidade em estoque |
 | availability_level | string | Nível de disponibilidade |
 
----
-
 ## Qualidade de Dados
 
 | Coluna | Problema | Decisão |
@@ -82,8 +57,6 @@ Lab01_PART1_SEUNUSP/
 | gender_segment | 0.5% nulos | Linhas removidas |
 | size_label, sku, subcategory | < 0.01% nulos | Linhas removidas |
 
----
-
 ## Modelagem Gold (Star Schema)
 ```
 fato_preco
@@ -93,8 +66,6 @@ fato_preco
     └── dim_tamanho  (sku, size_label)
 ```
 
----
-
 ## Métricas de Negócio
 
 1. Categoria com maior volume de produtos
@@ -103,8 +74,6 @@ fato_preco
 4. Preço médio por segmento de gênero
 5. Produtos presentes em mais países
 
----
-
 ## Gráficos
 
 ![Categorias](docs/grafico1_categorias.png)
@@ -112,8 +81,6 @@ fato_preco
 ![Disponibilidade](docs/grafico3_disponibilidade.png)
 ![Países](docs/grafico4_paises.png)
 ![Gênero](docs/grafico5_genero.png)
-
----
 
 ## Instruções de Execução
 
