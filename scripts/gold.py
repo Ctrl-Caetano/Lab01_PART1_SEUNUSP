@@ -2,9 +2,8 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 import os
 
-# =============================
-# CONEXÃO COM POSTGRESQL
-# =============================
+#POSTGRESQL
+
 DB_USER = "postgres"
 DB_PASS = "Teste"
 DB_HOST = "localhost"
@@ -14,16 +13,12 @@ DB_NAME = "nike_lab"
 engine = create_engine(f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
 print("Conexão com PostgreSQL estabelecida!")
 
-# =============================
-# LEITURA DO PARQUET SILVER
-# =============================
+# LEITURA DO PARQUET
 print("Lendo Parquet Silver...")
 df = pd.read_parquet("data/silver/nike_silver.parquet")
 print(f"Total de linhas: {len(df):,}")
 
-# =============================
 # DIMENSÕES
-# =============================
 print("\nCriando tabelas de dimensão...")
 
 # dim_produto
@@ -47,9 +42,8 @@ dim_tamanho = df[["sku", "size_label"]].drop_duplicates()
 dim_tamanho.to_sql("dim_tamanho", engine, if_exists="replace", index=False)
 print(f"dim_tamanho: {len(dim_tamanho):,} registros")
 
-# =============================
 # FATO
-# =============================
+
 print("\nCriando tabela fato...")
 fato_preco = df[["product_id", "country_code", "gender_segment", 
                   "sku", "price_local", "sale_price_local", 
@@ -57,9 +51,8 @@ fato_preco = df[["product_id", "country_code", "gender_segment",
 fato_preco.to_sql("fato_preco", engine, if_exists="replace", index=False)
 print(f"fato_preco: {len(fato_preco):,} registros")
 
-# =============================
 # 5 QUERIES DE NEGÓCIO
-# =============================
+
 print("\n--- Métricas de Negócio ---")
 
 queries = {
