@@ -22,7 +22,7 @@ PostgreSQL (Gold) — Star Schema
 - **Linhas:** 1.447.795
 - **Colunas:** 35
 - **Países:** 45
-- **Tamanho:** ~1,68 GB
+- **Tamanho:** 1,68 GB
 
 ## Dicionário de Dados
 
